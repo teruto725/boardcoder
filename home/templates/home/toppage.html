@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>This is a top page.</h1>
+    {% if user.is_authenticated %}
+        <p>こんにちは{{ user.username }}さん</p>
+        <button type="button" class="btn btn-primary btn-lg" onclick="location.href='{% url 'accounts:logout' %}'">logout</button>
+        <button type="button" class="btn btn-primary btn-lg" onclick="location.href='{% url 'accounts:detail' user.pk %}'">ユーザページ</button>
+    {% else %}
+        <button type="button" class="btn btn-primary btn-lg" onclick="location.href='{% url 'accounts:login' %}'">login</button>
+        <button type="button" class="btn btn-primary btn-lg" onclick="location.href='{% url 'accounts:signup' %}'">signup</button>
+    {% endif %}
+{% endblock content %}
