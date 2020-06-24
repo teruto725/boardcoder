@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>User Profile</h1>
-<form method="post">
-
-{{ customuser.name }}
-{{ customuser.email }}
-</form>
-
+    <h1>User Profile</h1>
+        <div class ="image">
+            <img src="{{ customuser.image.url }}" style="width:300px;height:auto">
+        </div>
+        <div class ="username">
+            {{ customuser.username }}
+            {{ customuser.email }}
+        </div>
 {% endblock %}

@@ -13,25 +13,48 @@
 
     </head>
 
+    <header>
 
-    {% block header %}{% endblock %}
+        {% if user.is_authenticated %}
+            {# ログイン時に表示されるheaderを作る #}
+        {% else %}
+            {# 非ログイン時に表示されるheaderを作る #}
+        {% endif %}
 
-
+    </header>
 
     <body>
-        {% if messages %}
-            <p>message</p>
+        {% if messages %}{# messagesはリスト #}
             <ul class="messages">
-                {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                {% endfor %}
+            {% for message in messages %}{# message は辞書 #}
+                {# もし、メッセージがあるなら #}
+                {% if messages.tags == "error"  %}
+                    {# もし、メッセージがerrorなら #}
+                    <li class="{{ message.tags }}">{{ message }}</li>{# message.tags にtagの名前が入っているのでclass = "error"となっている #}
+                {% endif %}
+                {% if message.tags == "success"  %}
+                    {# もし、メッセージがsuccessなら #}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                {% endif %}
+                {% if message.tags == "info"  %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                {% endif %}
+            {% endfor %}
             </ul>
         {% endif %}
 
 
-        {% block content %}{% endblock %}
+
+        {% block content %}
+            {# ここに継承先のhtmlが挿入される #}
+        {% endblock %}
+
 
     </body>
 
+
+    <footer>
+        {# ここにフッターを作る #}
+    </footer>
 
 </html>

@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>ユーザ登録</h1>
-<form method="post">
+    <h1>Sign up</h1>
+    {# dont forget a enctype tag #}
+    <form action="/upload/" method="POST" class="post-form" enctype="multipart/form-data">
 
-{% csrf_token %}{# セキュリティ対策 #}
+    {% csrf_token %}{# for security #}
+    email{{ form.email }}
+    username{{ form.username}}
+    pass{{ form.password1 }}
+    confirm pass{{ form.password2 }}
+    image{{ form.image }}
+    <button type="submit">save</button>
+    </form>
+    <button type="button" class="btn btn-primary btn-lg" onclick="location.href='{% url 'home:home' %}'">go to home</button>
 
-{{ form.as_table }}
-
-<button type="submit">save</button>
-</form>
-<button type="button" class="btn btn-primary btn-lg" onclick="location.href='{% url 'home:home' %}'">go to home</button>
-<button type="button" class="btn btn-primary btn-lg" onclick="location.href='{% url 'home:home' %}'">go to home</button>
 {% endblock %}

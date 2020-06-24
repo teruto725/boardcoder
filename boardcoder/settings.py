@@ -31,14 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'accounts.apps.AccountsConfig',#accountの追加
+    'accounts',#accountの追加(一番上であること
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home.apps.HomeConfig',#homeの追加
+    'home',#homeの追加
 ]
 
 MIDDLEWARE = [
@@ -126,9 +126,12 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
-
+# setting of login
 AUTH_USER_MODEL = 'accounts.CustomUser'
-
 LOGIN_URL = 'accounts:login'
 LOGIN_REDIRECT_URL = '/' #ログイン後リダイレクト
 LOGOUT_REDIRECT_URL = 'home:home' #logout時のリダイレクト先
+
+# image directory
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

@@ -3,7 +3,7 @@ from django.urls import path
 from . import views
 
 
-app_name = "home"#名前空間の定義
+app_name = "home" # you can assign url like "home:home"
 
 
 urlpatterns = [

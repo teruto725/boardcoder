@@ -3,12 +3,11 @@
 {% block content %}
 
 <body>
-    <h1>Login Form</h1>
+    <h1>Edit Profile</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        {# as_pにするとフォームが自動生成される #}
-        <button type="submit">Login</button>
+        <button type="submit">Save</button>
     </form>
 </body>
 
