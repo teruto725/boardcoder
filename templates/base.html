@@ -20,30 +20,29 @@
         {% else %}
             {# 非ログイン時に表示されるheaderを作る #}
         {% endif %}
-
     </header>
 
     <body>
         {% if messages %}{# messagesはリスト #}
-            <ul class="messages">
-            {% for message in messages %}{# message は辞書 #}
-                {# もし、メッセージがあるなら #}
-                {% if messages.tags == "error"  %}
-                    {# もし、メッセージがerrorなら #}
-                    <li class="{{ message.tags }}">{{ message }}</li>{# message.tags にtagの名前が入っているのでclass = "error"となっている #}
-                {% endif %}
-                {% if message.tags == "success"  %}
-                    {# もし、メッセージがsuccessなら #}
-                    <li class="{{ message.tags }}">{{ message }}</li>
-                {% endif %}
-                {% if message.tags == "info"  %}
-                    <li class="{{ message.tags }}">{{ message }}</li>
-                {% endif %}
-            {% endfor %}
-            </ul>
+            <div class="alert alert-primary" role="alert">{# bootstrapの定義済みclassを使ってる #}
+                <ul class="messages">
+                {% for message in messages %}{# message は辞書 #}
+                    {# もし、メッセージがあるなら #}
+                    {% if messages.tags == "error"  %}
+                        {# もし、メッセージがerrorなら #}
+                        <li class="{{ message.tags }}">{{ message }}</li>{# message.tags にtagの名前が入っているのでclass = "error"となっている #}
+                    {% endif %}
+                    {% if message.tags == "success"  %}
+                        {# もし、メッセージがsuccessなら #}
+                        <li class="{{ message.tags }}">{{ message }}</li>
+                    {% endif %}
+                    {% if message.tags == "info"  %}
+                        <li class="{{ message.tags }}">{{ message }}</li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+            </div>
         {% endif %}
-
-
 
         {% block content %}
             {# ここに継承先のhtmlが挿入される #}
