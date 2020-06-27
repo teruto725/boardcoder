@@ -10,7 +10,7 @@ class ScriptCreateForm(forms.ModelForm):
 
     class Meta:
         model = Script
-        fields = ('name', 'language', 'user', 'file',"gamename")
+        fields = ('name', 'language', 'file',"gamename")
         LANG_CHOICES = (
             ('python', 'python'),
             ('java', 'java'),
@@ -18,5 +18,5 @@ class ScriptCreateForm(forms.ModelForm):
         )
         widgets = {# can define formstypes
             'language': forms.Select(choices=LANG_CHOICES),
-            'gamename' : forms.Select(choices=GAME_OPTIONS),
+            'gamename': forms.Select(choices=GAME_OPTIONS),
         }
