@@ -2,7 +2,7 @@
 {% block content %}
     <h1>Sign up</h1>
     {# dont forget a enctype tag #}
-    <form action="/upload/" method="POST" class="post-form" enctype="multipart/form-data">
+    <form action="" method="POST" class="post-form" enctype="multipart/form-data">
 
     {% csrf_token %}{# for security #}
     email{{ form.email }}

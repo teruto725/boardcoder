@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
@@ -17,6 +17,15 @@ class UserCreateView(CreateView):
     template_name = "accounts/signup.html"
     success_url = reverse_lazy("accounts:login")# dont use reverse as a sucess url
 
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST, request.FILES)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.save()
+            #messages.success(self.request, "OK,upload:"+obj.name)
+            return HttpResponseRedirect(reverse("accounts:login"))
+        else:
+            raise Http404("Question does not exist")
 
 class UserDetailView(DetailView):
     model = CustomUser
@@ -36,7 +45,6 @@ class UserDetailView(DetailView):
             return HttpResponseRedirect(reverse('home:home'))
 
 
-
 class UserUpdateView(UpdateView):
     model = CustomUser
     form_class = CustomUserChangeForm
@@ -44,3 +52,5 @@ class UserUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('accounts:detail', kwargs={'pk': self.object.pk})
+
+

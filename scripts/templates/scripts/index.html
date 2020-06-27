@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Scripts List</h1>
+<ul>
+  {% for script in scripts %}
+        <li>{{ script.name}} : {{ script.gamename}} : {{ script.language}} <a href="{% url 'scripts:delete' script.pk %}">削除</a></li>
+  {% endfor %}
+</ul>
+
+    <a href="{% url 'scripts:create' %}">Upload New Scripts</a>
+
+
+{% endblock %}
