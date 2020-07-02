@@ -7,6 +7,7 @@
         <button type="button" class="btn btn-primary btn-lg" onclick="location.href='{% url 'accounts:logout' %}'">logout</button>
         <button type="button" class="btn btn-primary btn-lg" onclick="location.href='{% url 'accounts:detail' user.pk %}'">profile</button>
         <button type="button" class="btn btn-primary btn-lg" onclick="location.href='{% url 'scripts:index' %}'">My scripts</button>
+        <button type="button" class="btn btn-primary btn-lg" onclick="location.href='{% url 'rooms:index' %}'">Choice Room</button>
     {% else %}
         <button type="button" class="btn btn-primary btn-lg" onclick="location.href='{% url 'accounts:login' %}'">login</button>
         <button type="button" class="btn btn-primary btn-lg" onclick="location.href='{% url 'accounts:signup' %}'">signup</button>

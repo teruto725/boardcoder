@@ -27,6 +27,7 @@ class UserCreateView(CreateView):
         else:
             raise Http404("Question does not exist")
 
+
 class UserDetailView(DetailView):
     model = CustomUser
     template_name = "accounts/detail.html"

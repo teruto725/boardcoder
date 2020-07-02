@@ -6,5 +6,4 @@ app_name = "games"
 
 urlpatterns = [
     path('', index, name='index'),
-    path('<slug:room_name>/', room, name='room')
 ]

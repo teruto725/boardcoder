@@ -40,8 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',#homeの追加
-    'games',
-    'scripts'
+    #'games',
+    'scripts',
+    'rooms',
 ]
 
 ASGI_APPLICATION = 'boardcoder.routing.application'#  chanel

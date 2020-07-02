@@ -17,7 +17,6 @@ class CreateScriptView(CreateView, LoginRequiredMixin ):
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
-            print("s")
             obj = form.save(commit=False)
             obj.user = self.request.user
             obj.save()

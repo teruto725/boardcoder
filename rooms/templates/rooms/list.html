@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for room in object_list %}
+    <ul>
+        <li>{{ room.name }}
+        {{ room.gamename }}
+        <button type="button" class="btn btn-primary btn-lg" onclick="location.href='{% url 'rooms:room' room.pk %}'">Enter this room</button>
+        </li>
+    </ul>
+{% endfor %}
+<button type="button" class="btn btn-primary btn-lg" onclick="location.href='{% url 'rooms:create' %}'">Create New Room</button>
+{% endblock %}

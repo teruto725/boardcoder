@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.utils.safestring import mark_safe
 import json
 
+from django.views.generic import CreateView, ListView, DetailView, DeleteView
+
 
 
 def index(request):

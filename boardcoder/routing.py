@@ -1,6 +1,6 @@
 from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
-from games import routing
+from rooms import routing
 
 application = ProtocolTypeRouter({
     # (http->django views is added by default)

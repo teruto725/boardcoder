@@ -2,6 +2,8 @@ from asgiref.sync import async_to_sync
 from channels.generic.websocket import WebsocketConsumer
 import json
 
+from rooms.models import Room
+
 
 class ChatConsumer(WebsocketConsumer):
 
