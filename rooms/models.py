@@ -34,7 +34,7 @@ class Room(models.Model):
                 self.set_user(None, i)
                 self.save()
                 return "success"
-        return "error"
+        return "no_exist"
 
     def get_user_list(self):
         li = [self.user1, self.user2, self.user3, self.user4]

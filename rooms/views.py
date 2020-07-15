@@ -11,6 +11,7 @@ import json
 from django.views.generic import CreateView, ListView, DetailView, DeleteView, TemplateView, RedirectView
 from rooms.forms import RoomCreateForm
 from rooms.models import Room
+from scripts.models import Script
 
 
 class RoomCreateView(CreateView):
@@ -36,15 +37,20 @@ class RoomView(DetailView):
         room = Room.objects.get(pk=self.object.pk)
         result = room.add_user(user=user)
         self.object = self.get_object()
+
         if result == "full":
             messages.error(self.request, "Room is already full")
             return HttpResponseRedirect(reverse('rooms:index'))
+
         elif result == "already":
             messages.error(self.request, "You already in this room")
             context = super().get_context_data(object=self.object)
+            context["my_scripts"] = Script.objects.filter(user=user, gamename=room.gamename)#ログインユーザの対象ゲームのスクリプト
             return self.render_to_response(context)
+
         elif result == "success":
             context = super().get_context_data(object=self.object)
+            context["my_scripts"] = Script.objects.filter(user=user, gamename=room.gamename)
             return self.render_to_response(context)
 
 

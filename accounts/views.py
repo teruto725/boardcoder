@@ -22,7 +22,7 @@ class UserCreateView(CreateView):
         if form.is_valid():
             obj = form.save(commit=False)
             obj.save()
-            #messages.success(self.request, "OK,upload:"+obj.name)
+            # messages.success(self.request, "OK,upload:"+obj.name)
             return HttpResponseRedirect(reverse("accounts:login"))
         else:
             raise Http404("Question does not exist")
